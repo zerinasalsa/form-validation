@@ -1,0 +1,82 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: skyblue;
+  width: 300px;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+.user-input {
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+label {
+  color: white;
+  font-size: 15px;
+  margin-bottom: 2px;
+  align-items: flex-start;
+}
+
+input {
+  padding: 2x;
+  height: 30px;
+  border-radius: 3px;
+  background-color: white;
+  font-size: 10px;
+}
+
+::placeholder {
+  color: gray;
+  font-size: 12px;
+}
+
+.group {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.group label {
+  margin-right: 5px;
+}
+
+.group input {
+  flex-grow: 1;
+  width: 10px;
+}
+
+.group button {
+  margin-left: 10px;
+}
+
+.success-message,
+.error-message {
+  position: absolute;
+  left: 5px;
+  bottom: -15px;
+  font-size: 10px;
+}
+
+.success-message {
+  color: green;
+  display: none;
+}
+
+.error-message {
+  color: red;
+  display: none;
+}
