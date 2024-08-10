@@ -5,13 +5,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const ageInput = form["age"];
   const outputMessage = document.getElementById("outputMessage");
 
+  const invalidInputs = ["boolean", "null", "undefined", "number", "object"];
+
+  function isValidName(name) {
+    return (
+      /^[a-zA-Z\s]+$/.test(name) && !invalidInputs.includes(name.toLowerCase())
+    );
+  }
+
+  function preventInvalidInput(inputElement) {
+    inputElement.addEventListener("input", function () {
+      if (!isValidName(inputElement.value.trim())) {
+        inputElement.value = inputElement.value.slice(0, -1);
+      }
+    });
+  }
+
+  preventInvalidInput(firstNameInput);
+  preventInvalidInput(lastNameInput);
+
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     let isValid = true;
 
     // Validate First Name
-    if (firstNameInput.value.trim() === "") {
+    if (!isValidName(firstNameInput.value)) {
       document.getElementById("firstNameError").style.display = "block";
       document.getElementById("firstNameSuccess").style.display = "none";
       isValid = false;
@@ -21,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Validate Last Name
-    if (lastNameInput.value.trim() === "") {
+    if (!isValidName(lastNameInput.value)) {
       document.getElementById("lastNameError").style.display = "block";
       document.getElementById("lastNameSuccess").style.display = "none";
       isValid = false;
